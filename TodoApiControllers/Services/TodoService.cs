@@ -14,10 +14,17 @@ public static class TodoService {
 
   public static List<TodoItem> GetAll() => TodosList;
 
-  public static TodoItem? GetById(int id) => TodosList.FirstOrDefault(t => t.Id == id);
+  public static TodoItem? GetTodoItemById(int id) => TodosList.FirstOrDefault(t => t.Id == id);
 
   public static void Add(TodoItem todoItem) {
     todoItem.Id = nextId++;
     TodosList.Add(todoItem);
+  }
+
+  public static void Delete(int id) {
+    var todoItem  = GetTodoItemById(id);
+    if(todoItem == null) return;
+
+    TodosList.Remove(todoItem);
   }
 }
