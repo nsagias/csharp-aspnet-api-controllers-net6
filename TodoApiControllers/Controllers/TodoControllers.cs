@@ -41,12 +41,17 @@ public class TodoController : ControllerBase {
     if (existingTodo == null) return NotFound();
 
     TodoService.Update(todoItem);
-    return NoContent()
+    return NoContent();
   }
 
-  // DELETE by id 
+  
   [HttpDelete("{id}")]
+  // DELETE by id 
   public IActionResult Delete(int id) {
-    //
+    var todoItem = TodoService.GetTodoItemById(id);
+    if (todoItem == null) return  NotFound();
+
+    TodoService.Delete(id);
+    return NoContent();
   }
 }
