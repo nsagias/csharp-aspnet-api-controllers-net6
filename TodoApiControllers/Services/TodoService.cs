@@ -4,7 +4,7 @@ namespace TodoApiControllers.Services;
 
 public static class TodoService {
   static List<TodoItem> TodosList { get; }
-  static int nexId = 3;
+  static int nextId = 3;
   static TodoService() {
     TodosList = new List<TodoItem> {
       new TodoItem { Id = 1, Name = "Get Api Controller complete", IsDone = false},
@@ -15,4 +15,9 @@ public static class TodoService {
   public static List<TodoItem> GetAll() => TodosList;
 
   public static TodoItem? GetById(int id) => TodosList.FirstOrDefault(t => t.Id == id);
+
+  public static void Add(TodoItem todoItem) {
+    todoItem.Id = nextId++;
+    TodosList.Add(todoItem);
+  }
 }
