@@ -10,8 +10,21 @@ public class TodoController : ControllerBase {
   public TodoController () {
   }
 
-  // GET all todos
+ 
+  [HttpGet]
+   // GET all todos
+  public ActionResult<List<TodoItem>> GetAll() => TodoService.GetAll();
+
+  [HttpGet("{id}")]
   // GET todo by id
+  public ActionResult<TodoItem> GetTodoById(int id) {
+    var todoItem = TodoService.GetTodoItemById(id);
+    if(todoItem == null) return NotFound();
+    
+    return todoItem;
+  }
+
+
   // POST  create new 
   // PUT update by id
   // DELETE by id 
