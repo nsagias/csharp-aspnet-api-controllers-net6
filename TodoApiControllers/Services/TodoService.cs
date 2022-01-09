@@ -11,4 +11,8 @@ public static class TodoService {
       new TodoItem { Id = 2, Name = "Review entity frameworks", IsDone = false}
     };
   }
+
+  public static List<TodoItem> GetAll() => TodosList;
+
+  public static TodoItem? Get(int id) => TodosList.FirstOrDefault(t => t.Id == id);
 }
