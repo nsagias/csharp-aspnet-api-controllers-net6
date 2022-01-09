@@ -14,5 +14,5 @@ public static class TodoService {
 
   public static List<TodoItem> GetAll() => TodosList;
 
-  public static TodoItem? Get(int id) => TodosList.FirstOrDefault(t => t.Id == id);
+  public static TodoItem? GetById(int id) => TodosList.FirstOrDefault(t => t.Id == id);
 }
