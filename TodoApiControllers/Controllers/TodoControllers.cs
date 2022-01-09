@@ -28,7 +28,8 @@ public class TodoController : ControllerBase {
   [HttpPost]
   // POST  create new
   public IActionResult Create(TodoItem todoItem) {
-    // 
+    TodoService.Add(todoItem);
+    return CreatedAtAction(nameof(Create), new {id = todoItem.Id}, todoItem);
   } 
 
   [HttpPut]
