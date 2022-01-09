@@ -35,7 +35,13 @@ public class TodoController : ControllerBase {
   [HttpPut]
   // PUT update by id
   public IActionResult Update(int id, TodoItem todoItem) {
-   //
+    if (id != todoItem.Id) return BadRequest();
+
+    var existingTodo = TodoService.GetTodoItemById(id);
+    if (existingTodo == null) return NotFound();
+
+    TodoService.Update(todoItem);
+    return NoContent()
   }
 
   // DELETE by id 
