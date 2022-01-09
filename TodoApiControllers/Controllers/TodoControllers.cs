@@ -25,7 +25,21 @@ public class TodoController : ControllerBase {
   }
 
 
-  // POST  create new 
+  [HttpPost]
+  // POST  create new
+  public IActionResult Create(TodoItem todoItem) {
+    // 
+  } 
+
+  [HttpPut]
   // PUT update by id
+  public IActionResult Update(int id, TodoItem todoItem) {
+   //
+  }
+
   // DELETE by id 
+  [HttpDelete("{id}")]
+  public IActionResult Delete(int id) {
+    //
+  }
 }
