@@ -32,10 +32,11 @@ public class TodoController : ControllerBase {
     return CreatedAtAction(nameof(Create), new {id = todoItem.Id}, todoItem);
   } 
 
-  [HttpPut]
+  [HttpPut("{id}")]
   // PUT update by id
   public IActionResult Update(int id, TodoItem todoItem) {
     if (id != todoItem.Id) return BadRequest();
+   
 
     var existingTodo = TodoService.GetTodoItemById(id);
     if (existingTodo == null) return NotFound();
