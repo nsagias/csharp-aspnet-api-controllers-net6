@@ -14,7 +14,7 @@ public static class TodoService {
 
   public static List<TodoItem> GetAll() => TodosList;
 
-  public static TodoItem? GetTodoItemById(int id) => TodosList.FirstOrDefault(t => t.Id == id);
+  public static TodoItem? GetTodoItemById(int id) => TodosList.FirstOrDefault(todo => todo.Id == id);
 
   public static void Add(TodoItem todoItem) {
     todoItem.Id = nextId++;
@@ -26,5 +26,12 @@ public static class TodoService {
     if(todoItem == null) return;
 
     TodosList.Remove(todoItem);
+  }
+
+  public static void Update(TodoItem todoItem) {
+    var index = TodosList.FindIndex(todo => todo.Id == todoItem.Id);
+    if (index == -1 ) return;
+
+    TodosList[index] = todoItem;
   }
 }
